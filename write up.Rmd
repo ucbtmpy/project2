@@ -1,0 +1,177 @@
+---
+title: "Write-up"
+author: "Monika Yordanova"
+date: "16/07/2020"
+output: html_document
+---
+# Modelling Environmental impacts of management changes targetting herbicide resistance  
+
+## Introduction  
+
+Wheat is one of the world's most important crops. Humans value wheat so much that it is grown on more land area than any other crop in the world (Cossani & Reynolds, 2012; FAOSTAT, 2020). As the global population is expected to reach 9.1 billion people by 2050 (UN DESA, 2017), it is becoming increasingly important for the crops we grow to be versetile, nutricious and resilient to ensure future food security. Wheat has all of these qualities. It is widely used for food, but also to feed livestock and as a source of biofuels (Qureshi et al., 2013; Cossani & Reynolds, 2012; Shewry & Hey, 2015). Moreover, it is one of the most protenacious cereal crops, accounting for 23% of daily protein intake in the UK (Shewry & Hey, 2015). It is a rich source of dietary fiber, B vitamins and phytochemicals (Shewry & Hey, 2015). Lastly, these benefits are easily accessible to humanity globally, as the cereal is resilient to a wide variety of environmental conditions, making it possible to grow the crop in most countries (Cossani & Reynolds, 2012). It is particularly important for the UK, as the most widely grown crop in the country, accounting for 1,748,000 hec of its land (FAOSTAT, 2020). Therefore, the UK has some of the highest proportions of their land dedicated to the production of the carbohydrate rich crop (Ritchie & Roster, 2013).  
+  
+Despite the versitility and importance of the commonly grown wheat, *Triticum aestivum*, it faces a wide array of threats (Cossani & Reynolds, 2012; Curtis & Halford, 2014; Bekele et al., 2013; Singh et al., 2013; Freckleton et al., 2017; Hicks et al., 2018). One such prevasive threat in the UK is Black-grass (BG), *Alopecurus myosuroides* (Freckleton et al., 2017; Hicks et al., 2018; Varah et al., 2020; Brazier et al., 2002). A cross-country survey examining wheat fields conducted in 2014 determined that 88% of 24,824 quadrats, sized 20x20 m, contained at least some BG in them, indicating how wide spread this weed is (Hicks et al., 2018). This represents a problem both in terms of food security and economic losses for UK wheat farmers (Freckleton et al., 2017; Hicks et al., 2018; Varah et al., 2020; Brazier et al., 2002). The costs accumulated can be direct, as the weed imposes significant costs to the yields obtained by wheat, and indirect, as farmers overwhelmingly focus on tackling the weed using herbicides incurring additional costs (Freckleton et al., 2017). These costs are further inflated by BG growing resistant to the herbiciedes commonly used against them (Freckleton et al., 2017; Hicks et al., 2018; Varah et al., 2020). A study estimating these costs based on 2014 prices determined that in England £0.4 billion of gross profits is lost due to costs associeated with *A. myosuroides* (Varah et al., 2020).  
+
+While xenobiotic use has allowed for significant improvements in humanity's ability to obtain sufficient food for its evergrowing populations, its wide use has also lead to significant crop losses as reliance on this strategy above all others has prompted accelerated rates of evolution of resistance against herbicides (Sandermann, 2006; Herrmann et al., 2016; Clevo Wilson et al., 2001; Geiger et al., 2010; Hicks et al., 2018). Furthermore, the resistance encountered in BG against Cycloxydim, Atlantis and Fenoxaprop is likely to be metabolic as it is not independent across the three different herbicides leveraged against the weed (Hicks et al., 2018). This implies that evolution of one metabolite to target one mode of action increases the production of metabolites that target another (Hicks et al., 2018). Thusfar, the primary approach to tackling herbicide resistance, or resistance to most xenobiotic chemicals, has been to develop new chemicals with alternative modes of action (Sandermann, 2006; Herrmann et al., 2016; Clevo Wilson et al., 2001; Geiger et al., 2010; Hicks et al., 2018). This is because a wide-spread assumption has been that evolution of resistance to one xenobiont would be independent to another, however this appears to not necessarily be the case (Hicks et al., 2018). Developing more xenobionts for a weed that has already been established to rapidly evolve resistance against existing herbicides may incur further costs that would not be justified if resistance is again rapidly developed (Hicks et al., 2018). Therefore, alternative approaches should be available especially in cases where resistance has been determined to be most-widely spread.  
+
+Additionally, as the focus of such practices is increasingly placed on costs endred by farmers, food security is not considered sufficiently through the lense of environmental costs associated with strategies selected and the long-term costs to future food security if strategies chosen become unstustainable down-the-line. Addittionally, as the human population grows, it is anticipated that humanity will require more land in order to meet its demands for food. Agricultural intensification predictably leads to poorer local biodiversity and even losses in the diversity of keystone species such as bumblebees (Soroye et al., 2020; Reidsma et al., 2006; Poschloda et al., 2004). Therefore, ecologists and conservationsists should aim to widen their focus from wild-life habbitats to also increasingly encompass agricultural systems to maintain future biodiversity and ecosystem services.  
+
+Using ecosystem services as a source of bolstering yield has been favoured for its environmental gains and in recent years there has been an increased focus on determining non-chemical based ways to improve yield outcomes (Southon et al., 2019; Gagic et al., 2017; Bommarco et al., 2013; Pywell et al., 2015). Such studies may aim to find ways to increase pollinator diversity, which can be useful for boosting the yields of animal-pollinated crops (Bommarco et al., 2013). Pollination alone has been valued to account for 235 billion - 577 billion US dollars worth of annual global food production (FAO News article). Other studies have focussed on determining ways that can promote natural pest controllers as a means to reduce reliance on pesticides (Southon et al., 2019; Gagic et al., 2017; Bommarco et al., 2013; Pywell et al., 2015). Additionally, they may focus on determinig ways to improve soil quality, for example through increasing soil organic carbon, which has been linked to a variety of other favourable outcomes such as larger and more complex food webs (Barrios, 2007; Gagic et al., 2017; Nicoloso et al. 2020). This increase in soil organic carbon is also associated with increased fertility and therefore improved yield for crops grown (Ernst & Emmerling, 2009; Gagic et al., 2017).   *#I should probably talk about nitrogen leaching here! (first read ref-s from lit folder n leaching)* *might decide to remove pollinator part?*  
+
+Rotation practices have been widely used to improve yield outcomes and recude weed spead (Havlin et al., 1990; Lehman et al., 2017; Tiemann et al., 2015). Additionally, such strategies may provide some long-term ecological benefits by diversifying local microbiota and by extension improving below ground ecosystem services (Tiemann et al., 2015; Barrios, 2007; Gagic et al., 2017; Ernst & Emmerling, 2009). We want to assess whether we can use rotational practices to provide a win-win scenario for farmers and local biodiversity by controlling BG spread, boosting wheat yields and decreasing nitrogen leaching. The UK has unequal distributions in the level of spread and resistance of BG (Hicks et al., 2018; Varah et al., 2020). BG resistance levels are distributed across a gradient in the UK, with southern areas having higher levels of resistance than northern areas (Hicks et al., 2018; Varah et al., 2020). Therefore, in our study we aim to assess 3 rotation schemes developed by farmers as appropriate for 3 scenarious related to the severity of BG resistance and density. The rotation schemes considered have been developed for a scenario with high resistance and high density of BG, low resistance and high density, and low density and low resistance. These schemes will be compared to a scenario where winter wheat is continuiously planted (CWW), and a bussiness as usual scenario (BAU), where farmers alternate winter wheat with winter oilseed rape, to determine how yield and nitrogen leaching compare between these scenarios. These schemes will be compared to the CWW and BAU scenario based on their yield and nitrogen leaching outcomes. The assessment will be performed through using DSSAT models that simulate the outcomes of the treatments specified, which have been calibrated based on experiments performed with wheat in the UK. Our hypothesis is that rotational schemes will provide benefits in terms of reducing nitrogen leaching and boosting wheat yields relative to the two alternative strategies.  
+
+**Sections removed in first draft that may come handy for later write up:**
+
+Important limitation: We can only say whether N is increasing or decreasing, not quantify it!!
+
+Some such threats are brought on by climate change (Cossani & Reynolds, 2012). Wheat is vulnerable to abiotic stresses such as drought and salinity fluctuations at every stage of its development (Cossani & Reynolds, 2012). Additionally biotic stressors are brought on with increased frequency as aphids that feed on wheat are shown to thrive in environments with high levels of pollutants (Gull et al., 2019; Bearchell et al., 2005; Whittaker et al., 2001). Aphids carry diseases such as barley yellow dwarf, to which plants are more susceptible under abiotic stress due to increases in their production of abscisic acid and reactive oxygen species, which decrease the plant’s defenses against other forms of stress (Fiebig et al., 2004;  Gull et al., 2019). 
+There are currently strategies that have been considered as alternatives to ones grounded in the use of herbicides, including use of inversion plough *...(Alexa look at paper ref-s 18-50)*. Such methods can be beneficial, however there should be further considertion into the long-term outcomes ouf their usage (Cousens & Moss 1990). For example, while ploughing can provide temporary benefits by burring the seeds of weeds to a depth where germination becomes less likely, such a strategy provides a temporary solution when used on its own. (Cousens & Moss 1990). This is because using this method in subsequent years will bring up the seeds and allow for the weeds to germinate in following years instead (Cousens & Moss 1990).
+
+## Methods  
+
+### Farmer focus strategies  
+- Crops we calibrated for = crops included in the farmer focus strategies (here you need to talk about the farmer focus strategies and how they are developed)  
+
+Farmer focus strategies were developed containing different rotation schemes. Some of these were designed by the BGRI Farmer Focus group, to target fields with specific black-grass density and resistance states, and considering soil type and region. The schemes selected and the density and severity of BG resistance they were developed for are available in *Table 1*. *#!RE-MAKE your table!*  
+```{r}
+# So the output of the gt package doesn't come up right in a word document, as you now know and unfortunately can't be saved from an html format, because the dimensions are odd. Keep the code for now in case you figure out a way to make this usable, because it is a pretty cool package with a lot of functions, but I think you might have to re-make this!!
+library(xlsx)
+ff <- read.xlsx("farmer_focus3.xlsx", 
+                sheetIndex = 1)
+
+library(xtable)
+library(gtable)
+library(gt)
+library(tidyverse)
+library(glue)
+
+#Farmer focus dataset
+ff
+
+#Farmer focus gt table
+ff %>% gt()
+
+#add stubs
+tab1 <-
+  ff %>%
+  gt(
+    rowname_col = "year",
+    groupname_col = "group"
+  )
+tab1
+
+# Add header and subheader
+tab2 <-
+tab1 %>%
+tab_header(
+title = md("FARMER FOCUS STRATEGIES"),
+subtitle = md("DEVELOPED FOR MANAGING BLACK GRASS")
+)
+tab2
+
+#Colouring
+library(paletteer)
+tab3 <-
+tab2 %>%
+data_color(
+columns = vars(group),
+colors = scales::col_numeric(
+palette = c(
+"red", "orange", "green", "blue"),
+domain = c(0.2E7, 0.4E7))
+)
+tab3
+# That palatteer package is independent so I could also look at the documents for it to try to adjust this
+
+#What else is left for this table:
+#There's a setting to standartise the dates with this package to be in a date format (optional)
+#I should probably divide the blackgrass herbicide regime into subsections for each crop rather than have the treatments numbered, or at least make it appear like a list
+#Add footnote (look at package, there was a funtion for it) to specify the farmers who developed each of the strategies and the soil type they were appropriate for
+#Function for unit specification available with package, I think
+# Is it possible to keep spaces as spaces rather than dots? If not you could edit an image version of it in the end and pop the image back into mark down so it doesn't look this clumsy
+
+#Additional notes
+# Do not forget to talk about difference in soil strategies were developed for in your discussion
+```
+*Table 1:*
+
+### Estimating genotype-specific coefficients for DSSAT Crop models.
+- Have a subsection for each crop (including  generating input files for GLUE to use, running GLUE and then manual calibrations)  
+- Use barley calibration file Alexa has sent you to help you for this section  
+
+For each of our selected crops we used experimental data to calibrate phenological and growth coefficients using the program DSSAT v4.7 *()*. For each of the experiments we had an estimate of the average values for anthesis date, maturity date and yield. We used the tool GLUE in DSSAT to then estimate the phenological and growth coefficients appropriate for our selected cultivars based on prior probabilities *()*. This was done through a form of Baysian statistics, known as Monte Carlo sampling, where the parameters are randomly generated from the prior distribution of their values and run for each model. Subsequently  the outputs of these models are used to select the set of parameters, which has the maximum likelihood when compared to the observed values obtained through the experiments input. For each of our crops we ran GLUE 5000 times, allowing us to gain powerful estimates for our coefficents *()*.  
+
+To ensure the reliability the coefficients we selected, we then manually further calibrated them. This was similarly done through comparing them to the measured values obtained through the experiments to the yield, anthesis and maturity outcomes generated through DSSAT crop simulations based on the coefficients initially obtained through GLUE. To do so, we divided the simulated outcomes from DSSAT by the measured outcomes and determined an appropriate cutoff point in order to consider the coefficients as sufficiently reliable. The cutoff point we selected was 0.05 as we wanted to have 95% confidence in our selected coefficients based on the observed data we had. If any outcomes from GLUE did not match this cut-off point, we would change some of the coefficients, based on their known roles in phenology and growth, in order to gain estimates that more closely mirrored the observed data. 
+
+#### Winter wheat  
+The cultivar we considered for this study was Claire. We were able to obtain data from 7 experiments in order to estimate the measured yield, sow date, maturity date and harvest date via DSSAT. In our experimental data yield was given at 15% moisture. Therefore we calculated the weight at 0% moisture, as DSSAT simulations for yield are performed at 0% moisture. 
+GLUE was run using coefficients used for Mercia variety (Bannayan et al. 2003). Once GLUE runs were complete, minor calibrations were necessary to ensure measured values for matuirty, yield and anthesis were within 5% of the simulated values.
+
+#### Winter oilseed rape   
+In our study we utilised the cultivar Excalibur. We were given data from 9 experiments allowing us to estimate yield, sow date, maturity date and harvest date. We adjusted yield measurements, which were given at 15% moiture to 0% moisture. 
+GLUE was run using the initial coefficients obtained from*???*. Once GLUE runs were complete we manually calibrated the coefficients, first calibrating for phenology and then for the growth of the crop. We were able to chnage the coefficients to that the simulated values obtained would be within 5% difference from the data obtained through the experiments.  
+
+#### Spring barley  
+For this study we considered the cultivar of spring barley Propino. We were given data from 10 experiments, which allowed DSSAT to estimate yield, sow date, maturity date and harvest date. As yield was measured at 15% moisture, we removed 15% from the yield measurements as DSSAT simulates 0% dry weight yield. As anthesis data was unavalable for our experiments, we used regional anthesis dates into our inputs for GLUE and further for manual calibrations. As ‘observed’ anthesis date was in fact the regional average, we allowed simulated results to be within 7 days either side of ‘observed’ anthesis date *[D Cammarano, pers comm](Make sure to find this ref)*.  
+We ran GLUE using initial genetic coefficients from Cammarano et al 2019, and using the default ecotype except that we set P1 as 400 *we might change this*. Once GLUE runs were complete, we manually refined the coefficients, first calibrating for phenology and then for yield. Our target for coefficients where we had measured data (maturity date and yield) was to be within 5% of the observed data.  
+
+#### Winter barley  
+Here we considered the cultivar of winter barley Safron. We were given the data obtained from 14 experiments in order to estimate the yield, maturity and harvest date for the crop. As yield was measured at 15% moisture, we removed 15% from the yield measurements as DSSAT simulates 0% dry weight yield.
+The initial genetic coefficients we used for GLUE were obtained from *...?*. Manual calibration was then used to refine the coefficients in order for measured data to be within no more than 5% from the simulated data.  
+
+#### Spring bean  
+For spring bean we used data obtained from 7 experiments available to us. We adjusted moisture from 15% to 0%, as this is the value at which DSSAT simulations are performed. Additionally, as maturity date was not specifically measured we used harvest date as a proxy to compare to our simulations. Lastly, as anthesis was not recorded we used an average estimate for anthesis in the UK based on recomendations made from the PGRO *(not sure how to reference this)*. 
+We ran GLUE using genetic coefficients from Boote et al., 2002 *I think!*. Once GLUE runs were complete we further manually calibrated the coefficients in order to ensure measured and simulated values obtained were within 5% of one another.
+
+*I might make this whole section into a table if I am lacking in words*
+
+### Initial conditions for simmulations  
+Observations were collected from a single field (82561 m-2; 51°53' N 0°27' E [*this is slightly different to what we have in the excel master sheet but I found this online about RAF Andrews Field {in sheet 1.3138556 E}*], 73.45 a.s.l in Eastern England. The soil texture is medium loamy or medium silty drift over clayey materia, *in the soil txt file for IZ I found the ID which is this, but not sure whether is our case it was medium loamy or medium silty?*.  
+
+### Running the simmulations  
+- R code and how it works with DSSAT (still figuring that part out :D)  
+
+
+### Creating a robust sample size  
+- Bootstrapping  
+
+### Comparing wheat yields and nitrogen leaching for rotation treatments to CWW and BAU scenarios  
+
+
+## Results  
+
+## Discussion  
+
+## References *(references may include some that were excluded. Should be thoroughly checked)*
+  
+- “FAOSTAT.” Accessed July 20, 2020. http://www.fao.org/faostat/en/#data/QC.  
+- Hannah Ritchie and Max Roser (2013) - "Crop Yields". Published online at OurWorldInData.org. Retrieved from: 'https://ourworldindata.org/crop-yields'   
+- Qureshi, N., B. C. Saha, M. A. Cotta, and V. Singh. “An Economic Evaluation of Biological Conversion of Wheat Straw to Butanol: A Biofuel.” Energy Conversion and Management, Global Conference on Renewable energy and Energy Efficiency for Desert Regions 2011 “GCREEDER 2011,” 65 (January 1, 2013): 456–62.   https://doi.org/10.1016/j.enconman.2012.09.015.  
+- Shewry, Peter R., and Sandra J. Hey. “The Contribution of Wheat to Human Diet and Health.” Food and Energy Security 4, no. 3 (October 2015): 178–202.  
+- UN DESA | United Nations Department of Economic and Social Affairs. “World Population Projected to Reach 9.8 Billion in 2050, and 11.2 Billion in 2100,” June 21, 2017. https://www.un.org/development/desa/en/news/population/world-population-prospects-2017.html.  
+- Curtis, T., and N. G. Halford. “Food Security: The Challenge of Increasing Wheat Yield and the Importance of Not Compromising Food Safety.” Annals of Applied Biology 164, no. 3 (2014): 354–72  
+- Shiferaw, Bekele, Melinda Smale, Hans-Joachim Braun, Etienne Duveiller, Mathew Reynolds, and Geoffrey Muricho. “Crops That Feed the World 10. Past Successes and Future Challenges to the Role Played by Wheat in Global Food Security.” Food Security 5, no. 3 (June 1, 2013): 291–317  
+- Singh, Ravi P., David P. Hodson, Yue Jin, Evans S. Lagudah, Michael A. Ayliffe, Sridhar Bhavani, Matthew N. Rouse, et al. “Emergence and Spread of New Races of Wheat Stem Rust Fungus: Continued Threat to Food Security and Prospects of Genetic Control.” Phytopathology® 105, no. 7 (June 29, 2015): 872–84.  
+- Fiebig, M., H.-M. Poehling, and C. Borgemeister. “Barley Yellow Dwarf Virus, Wheat, and Sitobion Avenae: A Case of Trilateral Interactions.” Entomologia Experimentalis et Applicata 110, no. 1 (2004): 11–21.  
+- Gull, Audil, Ajaz Ahmad Lone, and Noor Ul Islam Wani. “Biotic and Abiotic Stresses in Plants.” Abiotic and Biotic Stress in Plants, October 7, 2019.  
+- Bearchell, Sarah J., Bart A. Fraaije, Michael W. Shaw, and Bruce D. L. Fitt. “Wheat Archive Links Long-Term Fungal Pathogen Population Dynamics to Air Pollution.” Proceedings of the National Academy of Sciences 102, no. 15 (April 12, 2005): 5438–42.  
+- “Insects and Plants in a Changing Atmosphere - Whittaker - 2001 - Journal of Ecology - Wiley Online Library.” Accessed July 20, 2020.  
+- Brazier, Melissa, David J Cole, and Robert Edwards. “O-Glucosyltransferase Activities toward Phenolic Natural Products and Xenobiotics in Wheat and Herbicide-Resistant and Herbicide-Susceptible Black-Grass (Alopecurus Myosuroides).” Phytochemistry 59, no. 2 (January 1, 2002): 149–56.  
+- Sandermann, Heinrich. “Plant Biotechnology: Ecological Case Studies on Herbicide Resistance.” Trends in Plant Science 11, no. 7 (July 1, 2006): 324–28.  
+- Herrmann, J., M. Hess, H. Strek, O. Richter, and R. Beffa. “Linkage of the Current ALS-Resistance Status with Field History Information of Multiple Fields Infested with Blackgrass (Alopecurus Myosuroides Huds.) in Southern Germany.” Julius-Kühn-Archiv, no. No.452 (2016): 42–49.  
+- Tisdell, Clement, Clevo Wilson, and Clem Tisdell. “Why Farmers Continue to Use Pesticides Despite Environmental, Health and Sustainability Costs.” Ecological Economics 39 (February 1, 2001): 449–62.  
+- Geiger, Flavia, Jan Bengtsson, Frank Berendse, Wolfgang W. Weisser, Mark Emmerson, Manuel B. Morales, Piotr Ceryngier, et al. “Persistent Negative Effects of Pesticides on Biodiversity and Biological Control Potential on European Farmland.” Basic and Applied Ecology 11, no. 2 (March 1, 2010): 97–105.  
+- “A Model of the Effects of Cultivation on the Vertical Distribution of Weed Seeds within the Soil - COUSENS - 1990 - Weed Research - Wiley Online Library.” Accessed July 31, 2020.  
+- “Climate Change Contributes to Widespread Declines among Bumble Bees across Continents | Science.” Accessed August 3, 2020. https://science.sciencemag.org/content/367/6478/685.  
+- Pytrik Reidsma, Tonnie Tekelenburg, Maurits van den Berg, Rob Alkemade,
+Impacts of land-use change on biodiversity: An assessment of agricultural biodiversity in the European Union, Agriculture, Ecosystems & Environment, Volume 114, Issue 1, 2006, Pages 86-102.  
+- Southon, Robin J., Odair A. Fernandes, Fabio S. Nascimento, and Seirian Sumner. “Social Wasps Are Effective Biocontrol Agents of Key Lepidopteran Crop Pests.” Proceedings of the Royal Society B: Biological Sciences 286, no. 1914 (November 6, 2019): 20191676. https://doi.org/10.1098/rspb.2019.1676.  
+- Bommarco, Riccardo, David Kleijn, and Simon G. Potts. “Ecological Intensification: Harnessing Ecosystem Services for Food Security.” Trends in Ecology & Evolution 28, no. 4 (April 1, 2013): 230–38. https://doi.org/10.1016/j.tree.2012.10.012.  
+- ernst and emmerling 2009 “Impact of Five Different Tillage Systems on Soil Organic Carbon Content and the Density, Biomass, and Community Composition of Earthworms after a Ten Year Period | Semantic Scholar.” Accessed August 3, 2020.   https://www.semanticscholar.org/paper/Impact-of-five-different-tillage-systems-on-soil-of-Ernst-Emmerling/789eed8a0194cba6da5e7394fdaa6c348af0f6c6.  
+- “FAO - News Article: Pollinators Vital to Our Food Supply under Threat.” Accessed August 3, 2020. http://www.fao.org/news/story/en/item/384726/icode/.  
+- Havlin, J. L., D. E. Kissel, L. D. Maddux, M. M. Claassen, and J. H. Long. “Crop Rotation and Tillage Effects on Soil Organic Carbon and Nitrogen.” Soil Science Society of America Journal 54, no. 2 (1990): 448–52. https://doi.org/10.2136/sssaj1990.03615995005400020026x.  
+- Lehman, R. Michael, Shannon L. Osborne, and Sara E. Duke. “Diversified No-Till Crop Rotation Reduces Nitrous Oxide Emissions, Increases Soybean Yields, and Promotes Soil Carbon Accrual.” Soil Science Society of America Journal 81, no. 1 (2017): 76–83. https://doi.org/10.2136/sssaj2016.01.0021.  
+- L. K. Tiemann, A. S. Grandy, E. E. Atkinson, E. Marin-Spiotta, M. D. McDaniel. Crop rotational diversity enhances belowground communities and functions in an agroecosystem. Ecology Letters, 2015; 18 (8): 761 DOI: 10.1111/ele.12453  
+- P. Poschloda, , J.P. Bakkerb , S. Kahmen (2004) Changing Land Use and Its Impact on Biodiversity - ScienceDirect. Accessed August 4, 2020. https://www.sciencedirect.com/science/article/abs/pii/S1439179105000125. (you have the full pdf in your downloads BAEE)  
+- Nicoloso, Rodrigo S., Telmo J. C. Amado, and Charles W. Rice. “Assessing Strategies to Enhance Soil Carbon Sequestration with the DSSAT-CENTURY Model.” European Journal of Soil Science, February 6, 2020. https://doi.org/10.1111/ejss.12938.  
+
